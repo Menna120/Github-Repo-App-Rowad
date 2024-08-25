@@ -1,4 +1,4 @@
-package com.example.githubreposapp.presentation.screens.repo_details_screen.components
+package com.example.githubreposapp.presentation.screens.repo_details_screen.model
 
 data class RepoDetailsUiModel(
     val name: String,

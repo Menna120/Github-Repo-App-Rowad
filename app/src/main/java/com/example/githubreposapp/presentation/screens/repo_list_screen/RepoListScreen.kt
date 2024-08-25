@@ -13,8 +13,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.githubreposapp.R
-import com.example.githubreposapp.presentation.screens.common_components.AppBar
-import com.example.githubreposapp.theme.GithubReposAppTheme
+import com.example.githubreposapp.presentation.common_components.AppBar
+import com.example.githubreposapp.presentation.screens.repo_list_screen.components.RepoItem
+import com.example.githubreposapp.presentation.screens.repo_list_screen.model.GithubRepoUiModel
+import com.example.githubreposapp.presentation.screens.repo_list_screen.preview_data.fakeRepoUiModelList
+import com.example.githubreposapp.presentation.theme.GithubReposAppTheme
 
 @ExperimentalMaterial3Api
 @Composable

@@ -1,4 +1,4 @@
-package com.example.githubreposapp.presentation.screens.repo_list_screen
+package com.example.githubreposapp.presentation.screens.repo_list_screen.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -29,6 +29,8 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.githubreposapp.R
+import com.example.githubreposapp.presentation.screens.repo_list_screen.model.GithubRepoUiModel
+import com.example.githubreposapp.presentation.screens.repo_list_screen.preview_data.fakeRepoUiModelList
 
 @Composable
 fun RepoItem(

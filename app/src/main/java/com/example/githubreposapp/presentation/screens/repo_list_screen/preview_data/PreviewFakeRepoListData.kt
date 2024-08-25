@@ -1,4 +1,6 @@
-package com.example.githubreposapp.presentation.screens.repo_list_screen
+package com.example.githubreposapp.presentation.screens.repo_list_screen.preview_data
+
+import com.example.githubreposapp.presentation.screens.repo_list_screen.model.GithubRepoUiModel
 
 val fakeRepoUiModelList = listOf(
     GithubRepoUiModel(

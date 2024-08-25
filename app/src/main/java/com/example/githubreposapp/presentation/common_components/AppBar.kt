@@ -1,4 +1,4 @@
-package com.example.githubreposapp.presentation.screens.common_components
+package com.example.githubreposapp.presentation.common_components
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
@@ -17,7 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.githubreposapp.R
-import com.example.githubreposapp.theme.GithubReposAppTheme
+import com.example.githubreposapp.presentation.theme.GithubReposAppTheme
 
 @ExperimentalMaterial3Api
 @Composable

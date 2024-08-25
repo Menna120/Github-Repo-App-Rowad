@@ -1,4 +1,4 @@
-package com.example.githubreposapp.theme
+package com.example.githubreposapp.presentation.theme
 
 import android.app.Activity
 import android.os.Build

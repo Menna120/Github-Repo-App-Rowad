@@ -32,10 +32,11 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import com.example.githubreposapp.R
-import com.example.githubreposapp.presentation.screens.common_components.AppBar
+import com.example.githubreposapp.presentation.common_components.AppBar
 import com.example.githubreposapp.presentation.screens.repo_details_screen.components.DetailsItem
-import com.example.githubreposapp.presentation.screens.repo_details_screen.components.RepoDetailsUiModel
-import com.example.githubreposapp.theme.GithubReposAppTheme
+import com.example.githubreposapp.presentation.screens.repo_details_screen.model.RepoDetailsUiModel
+import com.example.githubreposapp.presentation.screens.repo_details_screen.preview_data.fakeRepoDetailsUiModel
+import com.example.githubreposapp.presentation.theme.GithubReposAppTheme
 
 @ExperimentalMaterial3Api
 @Composable
@@ -156,14 +157,7 @@ fun RepoDetailsScreen(
 fun DetailsScreenPreview() {
     GithubReposAppTheme {
         RepoDetailsScreen(
-            repoDetailsUiModel = RepoDetailsUiModel(
-                name = "Jetpack Compose",
-                imageUrl = "https://tabris.com/wp-content/uploads/2021/06/jetpack-compose-icon_RGB.png",
-                language = "Kotlin",
-                forksCount = "100",
-                starsCount = "1000",
-                description = "Jetpack Compose is Android's modern toolkit for building native user interfaces. It simplifies and accelerates UI development on Android with less code, powerful tools, and intuitive Kotlin APIs.",
-            ),
+            repoDetailsUiModel = fakeRepoDetailsUiModel,
             onClickBack = {},
             onClickViewIssues = {}
         )

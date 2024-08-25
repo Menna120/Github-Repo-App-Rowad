@@ -1,4 +1,4 @@
-package com.example.githubreposapp
+package com.example.githubreposapp.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -19,7 +19,7 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.githubreposapp.presentation.navigation.AppNavHost
-import com.example.githubreposapp.theme.GithubReposAppTheme
+import com.example.githubreposapp.presentation.theme.GithubReposAppTheme
 
 class MainActivity : ComponentActivity() {
     @ExperimentalMaterial3Api
