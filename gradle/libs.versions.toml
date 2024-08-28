@@ -1,7 +1,7 @@
 [versions]
 agp = "8.3.2"
 coilCompose = "2.6.0"
-kotlin = "1.9.10"
+kotlin = "1.9.0"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -19,6 +19,10 @@ hiltNavigationCompose = "1.2.0"
 coroutinesAndroid = "1.8.0"
 lottieCompose = "6.0.0"
 ksp = "1.9.10-1.0.13"
+retrofit = "2.9.0"
+gson = "2.10"
+room = "2.6.0"
+okkhttp3 = "5.0.0-alpha.11"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -52,6 +56,12 @@ hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-com
 
 coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutinesAndroid" }
 lottie-compose = { group = "com.airbnb.android", name = "lottie-compose", version.ref = "lottieCompose" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+okhttp3 = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okkhttp3" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+gson-converter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+room = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 
 
 [plugins]

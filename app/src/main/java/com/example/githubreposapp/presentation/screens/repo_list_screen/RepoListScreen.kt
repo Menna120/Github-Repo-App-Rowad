@@ -12,11 +12,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.githubreposapp.R
 import com.example.githubreposapp.presentation.common_components.AppBar
 import com.example.githubreposapp.presentation.screens.repo_list_screen.components.RepoItem
 import com.example.githubreposapp.presentation.screens.repo_list_screen.model.GithubRepoUiModel
 import com.example.githubreposapp.presentation.screens.repo_list_screen.preview_data.fakeRepoUiModelList
+import com.example.githubreposapp.presentation.screens.repo_list_screen.viewmodel.RepoListViewModel
 import com.example.githubreposapp.presentation.theme.GithubReposAppTheme
 
 @ExperimentalMaterial3Api
@@ -26,6 +28,8 @@ fun RepoListScreen(
     repoListUiModel: List<GithubRepoUiModel>,
     onRepoItemClicked: (repoItem: GithubRepoUiModel) -> Unit
 ) {
+    val repoListViewModel: RepoListViewModel = hiltViewModel()
+
     Scaffold(
         modifier = modifier
             .fillMaxSize()

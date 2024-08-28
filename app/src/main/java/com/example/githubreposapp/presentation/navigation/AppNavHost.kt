@@ -3,6 +3,7 @@ package com.example.githubreposapp.presentation.navigation
 import android.util.Log
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -10,6 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.githubreposapp.presentation.screens.repo_list_screen.RepoListScreen
 import com.example.githubreposapp.presentation.screens.repo_list_screen.preview_data.fakeRepoUiModelList
+import com.example.githubreposapp.presentation.screens.repo_list_screen.viewmodel.RepoListViewModel
 import com.example.githubreposapp.presentation.utils.Constants.Companion.NAME_KEY
 
 @ExperimentalMaterial3Api
@@ -22,6 +24,8 @@ fun AppNavHost() {
         startDestination = Screens.RepoListScreen.route
     ) {
         composable(route = Screens.RepoListScreen.route) {
+            val repoListViewModel: RepoListViewModel = hiltViewModel()
+
             RepoListScreen(repoListUiModel = fakeRepoUiModelList) {
              //   githubRepoUiModel = it
                 navController.navigate(Screens.RepoDetailsScreen.passRepoName(name = it.name))
