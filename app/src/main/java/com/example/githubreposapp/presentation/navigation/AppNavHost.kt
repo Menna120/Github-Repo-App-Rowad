@@ -1,18 +1,16 @@
 package com.example.githubreposapp.presentation.navigation
 
-import android.util.Log
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.githubreposapp.presentation.screens.repo_details_screen.RepoDetailsScreen
 import com.example.githubreposapp.presentation.screens.repo_list_screen.RepoListScreen
-import com.example.githubreposapp.presentation.screens.repo_list_screen.preview_data.fakeRepoUiModelList
-import com.example.githubreposapp.presentation.screens.repo_list_screen.viewmodel.RepoListViewModel
-import com.example.githubreposapp.presentation.utils.Constants.Companion.NAME_KEY
+import com.example.githubreposapp.presentation.utils.Constants.Companion.NAME_ARGUMENT_KEY
+import com.example.githubreposapp.presentation.utils.Constants.Companion.OWNER_ARGUMENT_KEY
 
 @ExperimentalMaterial3Api
 @Composable
@@ -24,38 +22,34 @@ fun AppNavHost() {
         startDestination = Screens.RepoListScreen.route
     ) {
         composable(route = Screens.RepoListScreen.route) {
-            val repoListViewModel: RepoListViewModel = hiltViewModel()
-
-            RepoListScreen(repoListUiModel = fakeRepoUiModelList) {
-             //   githubRepoUiModel = it
-                navController.navigate(Screens.RepoDetailsScreen.passRepoName(name = it.name))
+            RepoListScreen {
+                navController.navigate(Screens.RepoDetailsScreen.passOwnerAndName(name = it.name, owner = it.owner))
             }
         }
 
         composable(
             route = Screens.RepoDetailsScreen.route,
-            arguments = listOf(navArgument(NAME_KEY){
-                type = NavType.StringType
-            })
+            arguments = listOf(
+                navArgument(OWNER_ARGUMENT_KEY) {
+                    type = NavType.StringType
+                },
+                navArgument(NAME_ARGUMENT_KEY) {
+                    type = NavType.StringType
+                },
+            )
         ) {
-//            githubRepoUiModel?.let {
-//            val passedRepoDetailsUiModel = RepoDetailsUiModel(
-//                name = it.name,
-//                description = it.description,
-//                forksCount = "20",
-//                starsCount = it.stars,
-//                imageUrl = it.avatar,
-//                language = "Kotlin"
-//            )
-//                RepoDetailsScreen(repoDetailsUiModel = passedRepoDetailsUiModel, onClickBack = { }) {
-//
-//                }
-//            }
-            val passedName = it.arguments?.getString(NAME_KEY)
-            passedName?.let {name ->
-                     Log.d("RepoDetilsScreen", "passed name = $name")
+            val owner = it.arguments?.getString(OWNER_ARGUMENT_KEY)
+            val name = it.arguments?.getString(NAME_ARGUMENT_KEY)
+            if (owner != null && name != null) {
+                RepoDetailsScreen(
+                    owner = owner,
+                    name = name,
+                    onClickBack = { navController.navigateUp() },
+                    onClickViewIssues = {
+
+                    }) {
+                }
             }
         }
-
     }
 }

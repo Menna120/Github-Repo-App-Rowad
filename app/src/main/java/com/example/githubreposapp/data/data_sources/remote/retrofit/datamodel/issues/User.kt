@@ -1,6 +1,6 @@
-package com.example.githubreposapp.data.data_sources.remote.retrofit.datamodel
+package com.example.githubreposapp.data.data_sources.remote.retrofit.datamodel.issues
 
-data class Owner(
+data class User(
     val avatar_url: String,
     val events_url: String,
     val followers_url: String,

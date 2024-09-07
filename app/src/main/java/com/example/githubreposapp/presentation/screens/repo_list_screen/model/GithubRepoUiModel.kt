@@ -5,6 +5,6 @@ data class GithubRepoUiModel(
     val name:String,
     val avatar:String,
     val description:String,
-    val stars:String,
+    val stars:Int,
     val owner:String
 )

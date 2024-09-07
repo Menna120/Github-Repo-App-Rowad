@@ -78,7 +78,7 @@ fun RepoItem(
                     modifier = Modifier.weight(1f),
                     color = MaterialTheme.colorScheme.onSurface
                 )
-                Text(text = repoItem.stars)
+                Text(text = repoItem.stars.toString())
                 Image(
                     painter = painterResource(id = R.drawable.ic_star),
                     contentDescription = stringResource(id = R.string.repository_screen_star_icon_description),

@@ -22,3 +22,12 @@ object RepositoryModule {
     }
 
 }
+
+//@Module
+//@InstallIn(SingletonComponent::class)
+//abstract class RepositoryModuleWithBinds {
+//    @Binds
+//    abstract fun provideTrendingGithubRepositoryImpl(
+//        trendingRepositoryImpl: TrendingRepositoryImp
+//    ): TrendingRepository
+// }

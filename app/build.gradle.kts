@@ -94,13 +94,13 @@ dependencies {
     implementation(libs.coroutines)
     implementation(libs.retrofit)
     implementation(libs.okhttp3)
-     implementation(libs.gson)
-     implementation(libs.gson.converter)
-    //implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation(libs.gson)
+    implementation(libs.gson.converter)
 
     implementation(libs.room)
     ksp(libs.room.compiler)
 
+    implementation(libs.datastore)
     implementation(libs.lottie.compose)
 
 

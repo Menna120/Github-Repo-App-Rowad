@@ -1,6 +1,6 @@
 package com.example.githubreposapp.data.mapper
 
-import com.example.githubreposapp.data.data_sources.remote.retrofit.datamodel.GithubReposDataModel
+import com.example.githubreposapp.data.data_sources.remote.retrofit.datamodel.repo_list.GithubReposDataModel
 import com.example.githubreposapp.domain.model.GithubRepoDomainModel
 
 fun GithubReposDataModel.toGithubRepoDomainModel(): List<GithubRepoDomainModel> {

@@ -1,4 +1,4 @@
-package com.example.githubreposapp.data.data_sources.remote.retrofit.datamodel
+package com.example.githubreposapp.data.data_sources.remote.retrofit.datamodel.repo_list
 
 data class License(
     val key: String,

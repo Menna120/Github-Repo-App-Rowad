@@ -8,7 +8,7 @@ val fakeRepoUiModelList = listOf(
         name = "KotlinCoroutines",
         avatar = "https://avatars.githubusercontent.com/u/1485041?v=4",
         description = "Multiplatform coroutines for Kotlin",
-        stars = "10000",
+        stars = 10000,
         owner = "JetBrains"
     ),
     GithubRepoUiModel(
@@ -16,7 +16,7 @@ val fakeRepoUiModelList = listOf(
         name = "Compose",
         avatar = "https://avatars.githubusercontent.com/u/281053?v=4",
         description = "Declarative UI toolkit for Android",
-        stars = "8000",
+        stars = 8000,
         owner = "JetBrains"
     ),
     GithubRepoUiModel(
@@ -24,7 +24,7 @@ val fakeRepoUiModelList = listOf(
         name = "Retrofit",
         avatar = "https://avatars.githubusercontent.com/u/1485041?v=4",
         description = "Type-safe HTTP client for Android and Java",
-        stars = "6000",
+        stars = 6000,
         owner = "Square"
     ),
     GithubRepoUiModel(
@@ -32,7 +32,7 @@ val fakeRepoUiModelList = listOf(
         name = "OkHttp",
         avatar = "https://avatars.githubusercontent.com/u/1485041?v=4",
         description = "Efficient HTTP client for Android and Java",
-        stars = "5000",
+        stars = 5000,
         owner = "Square"
     ),
     GithubRepoUiModel(
@@ -40,7 +40,7 @@ val fakeRepoUiModelList = listOf(
         name = "Room",
         avatar = "https://avatars.githubusercontent.com/u/1485041?v=4",
         description = "SQLite database access object",
-        stars = "4000",
+        stars = 4000,
         owner = "Google"
     )
 )
