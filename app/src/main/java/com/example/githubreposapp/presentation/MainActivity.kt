@@ -19,7 +19,9 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.githubreposapp.presentation.navigation.AppNavHost
+import com.example.githubreposapp.presentation.screens.NavGraphs
 import com.example.githubreposapp.presentation.theme.GithubReposAppTheme
+import com.ramcosta.composedestinations.DestinationsNavHost
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,7 +31,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             GithubReposAppTheme {
-                AppNavHost()
+                DestinationsNavHost(navGraph = NavGraphs.root)
             }
         }
     }

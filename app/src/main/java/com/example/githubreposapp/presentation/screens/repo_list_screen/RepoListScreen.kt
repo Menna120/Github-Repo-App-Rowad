@@ -19,18 +19,22 @@ import com.example.githubreposapp.R
 import com.example.githubreposapp.presentation.common_components.AppBar
 import com.example.githubreposapp.presentation.common_components.ErrorSection
 import com.example.githubreposapp.presentation.common_components.shimmer.trending.AnimateShimmerTrendingList
-import com.example.githubreposapp.presentation.model.CustomExceptionUiModel
+import com.example.githubreposapp.presentation.screens.destinations.RepoDetailsScreenDestination
+import com.example.githubreposapp.presentation.screens.destinations.RepoListScreenDestination
 import com.example.githubreposapp.presentation.screens.repo_list_screen.components.RepoItem
 import com.example.githubreposapp.presentation.screens.repo_list_screen.model.GithubRepoUiModel
 import com.example.githubreposapp.presentation.screens.repo_list_screen.viewmodel.RepoListViewModel
 import com.example.githubreposapp.presentation.theme.GithubReposAppTheme
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.launch
 
 @ExperimentalMaterial3Api
+@Destination(start = true)
 @Composable
 fun RepoListScreen(
     modifier: Modifier = Modifier,
-    onRepoItemClicked: (repoItem: GithubRepoUiModel) -> Unit,
+    navigator: DestinationsNavigator
 ) {
     val repoListViewModel: RepoListViewModel = hiltViewModel()
     val repoListUiState = repoListViewModel.repoListStatFlow.collectAsStateWithLifecycle()
@@ -38,7 +42,14 @@ fun RepoListScreen(
     RepoListContent(
         modifier = modifier,
         repoListUiState = repoListUiState.value,
-        onRepoItemClicked = onRepoItemClicked,
+        onRepoItemClicked = {
+            navigator.navigate(
+                RepoDetailsScreenDestination(
+                    owner = it.owner,
+                    name = it.name
+                )
+            )
+        },
         onRefreshButtonClicked = {
             coroutineScope.launch {
                 repoListViewModel.requestGithubRepoList()

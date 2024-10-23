@@ -6,16 +6,14 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.pulltorefresh.PullToRefreshContainer
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.githubreposapp.R
 import com.example.githubreposapp.presentation.common_components.AppBar
@@ -24,7 +22,6 @@ import com.example.githubreposapp.presentation.common_components.shimmer.issues.
 import com.example.githubreposapp.presentation.screens.issues_screen.model.IssuesUiModel
 import com.example.githubreposapp.presentation.screens.issues_screen.preview.issuesUiModelPreviewData
 import com.example.githubreposapp.presentation.theme.GithubReposAppTheme
-import com.example.githubreposapp.presentation.theme.LightGreen
 
 
 @ExperimentalMaterial3Api
@@ -34,9 +31,11 @@ fun IssuesScreen(
     onRefreshList: () -> Unit,
     onBackArrowClicked: () -> Unit
 ) {
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .background(color = MaterialTheme.colorScheme.background)) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = MaterialTheme.colorScheme.background)
+    ) {
         AppBar(
             title = R.string.issues_app_bar_title,
             onBackButtonClicked = { onBackArrowClicked() }
@@ -45,13 +44,19 @@ fun IssuesScreen(
             issuesUiState.isLoading -> {
                 AnimateShimmerIssuesList()
             }
+
             issuesUiState.issuesList != null -> {
-                val isRefreshing by remember { // in viewmodel and before calling api make on refreshing = true then after getting data from api make onrefreshing = false
+                val isRefreshing by remember { // in viewmodel and before calling api make on refreshing = true then after getting data from api make onRefreshing = false
                     mutableStateOf(false)
                 }
-                IssuesContent(issuesUiState.issuesList,isRefreshing = isRefreshing, onPulledToRefresh = onRefreshList)
+                IssuesContent(
+                    issuesUiState.issuesList,
+                    isRefreshing = isRefreshing,
+                    onPulledToRefresh = onRefreshList
+                )
             }
-            else ->{
+
+            else -> {
                 ErrorSection(
                     onRefreshButtonClicked = onRefreshList,
                     customErrorExceptionUiModel = issuesUiState.customErrorExceptionUiModel
@@ -65,39 +70,24 @@ fun IssuesScreen(
 @Composable
 fun IssuesContent(
     issuesList: List<IssuesUiModel>,
-    isRefreshing:Boolean,
+    isRefreshing: Boolean,
     onPulledToRefresh: () -> Unit
 ) {
     val pullToRefreshState = rememberPullToRefreshState()
     Box(
-        Modifier
-            .fillMaxSize()
-            .nestedScroll(pullToRefreshState.nestedScrollConnection)
+        Modifier.fillMaxSize()
     ) {
-        IssuesLazyColumn(
-            issuesList = issuesList
-        )
-
-        if (pullToRefreshState.isRefreshing){
-            LaunchedEffect(key1 = true) {
-                onPulledToRefresh()
-            }
-        }
-
-        LaunchedEffect(key1 = isRefreshing) {
-            if (isRefreshing)
-                pullToRefreshState.startRefresh()
-            else
-                pullToRefreshState.endRefresh()
-        }
-
-        PullToRefreshContainer(
+        PullToRefreshBox(
             state = pullToRefreshState,
-            modifier = Modifier.align(Alignment.TopCenter),
-            contentColor = LightGreen
-        )
+            isRefreshing = isRefreshing,
+            onRefresh = { onPulledToRefresh() },
+            modifier = Modifier.align(Alignment.TopCenter)
+        ) {
+            IssuesLazyColumn(
+                issuesList = issuesList
+            )
+        }
     }
-
 }
 
 @ExperimentalMaterial3Api
@@ -107,7 +97,7 @@ fun PreviewTrendingGithubScreen() {
     GithubReposAppTheme(darkTheme = false) {
         IssuesScreen(
             issuesUiState = IssuesUiState(
-                issuesList  = listOf(issuesUiModelPreviewData)
+                issuesList = listOf(issuesUiModelPreviewData)
             ),
             onRefreshList = {},
             onBackArrowClicked = {}

@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
+    alias(libs.plugins.kotlinCompose)
 }
 
 android {
@@ -103,17 +104,7 @@ dependencies {
     implementation(libs.datastore)
     implementation(libs.lottie.compose)
 
+    implementation(libs.core)
+    ksp(libs.ksp)
 
-}
-
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-}
-
-tasks.withType<org.jetbrains.kotlin.gradle.internal.KaptGenerateStubsTask> {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
 }

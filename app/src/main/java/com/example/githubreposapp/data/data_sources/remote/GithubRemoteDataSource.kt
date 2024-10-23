@@ -15,8 +15,8 @@ class GithubRemoteDataSource @Inject constructor(
 ) {
     suspend fun fetchGithubRepos(): GithubReposDataModel {
         return try {
-            throw IOException()
-//            githubApi.fetchGithubRepos().body() as GithubReposDataModel
+//            throw IOException()
+            githubApi.fetchGithubRepos().body() as GithubReposDataModel
         } catch (e: Exception){
            throw e.toCustomExceptionDomainModel()
         }

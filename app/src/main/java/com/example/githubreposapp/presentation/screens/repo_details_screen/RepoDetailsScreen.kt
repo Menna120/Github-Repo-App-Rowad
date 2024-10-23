@@ -46,18 +46,22 @@ import com.example.githubreposapp.presentation.screens.repo_details_screen.compo
 import com.example.githubreposapp.presentation.screens.repo_details_screen.model.RepoDetailsUiModel
 import com.example.githubreposapp.presentation.screens.repo_details_screen.model.RepoDetailsUiState
 import com.example.githubreposapp.presentation.screens.repo_details_screen.viewmodel.RepoDetailsViewModel
+import com.example.githubreposapp.presentation.screens.repo_list_screen.model.GithubRepoUiModel
 import com.example.githubreposapp.presentation.theme.GithubReposAppTheme
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.launch
 
 @ExperimentalMaterial3Api
+@Destination
 @Composable
 fun RepoDetailsScreen(
     modifier: Modifier = Modifier,
+    navigator: DestinationsNavigator,
     owner: String,
     name: String,
-    onClickBack: () -> Unit,
-    onClickViewIssues: () -> Unit,
-    onShowIssuesClicked: () -> Unit
+//    onClickBack: () -> Unit,
+//    onShowIssuesClicked: () -> Unit
 ) {
     val repoDetailsViewModel: RepoDetailsViewModel = hiltViewModel()
     LaunchedEffect(key1 = true) {
@@ -68,7 +72,7 @@ fun RepoDetailsScreen(
     Scaffold(modifier = modifier.fillMaxSize(),
         topBar = {
             AppBar(
-                onBackButtonClicked = onClickBack,
+                onBackButtonClicked = { navigator.navigateUp() },
                 title = R.string.details_app_bar_title
             )
         }
@@ -92,7 +96,7 @@ fun RepoDetailsScreen(
                 DetailsContent(
                     innerPadding = innerPadding,
                     repoDetailsUiModel = (repoDetailsUiState as RepoDetailsUiState.RepoDetailsUiModelData).repositoryDetails,
-                    onShowIssuesClicked = onShowIssuesClicked
+                    onShowIssuesClicked = {  }
                 )
             }
 

@@ -21,35 +21,35 @@ fun AppNavHost() {
         navController = navController,
         startDestination = Screens.RepoListScreen.route
     ) {
-        composable(route = Screens.RepoListScreen.route) {
-            RepoListScreen {
-                navController.navigate(Screens.RepoDetailsScreen.passOwnerAndName(name = it.name, owner = it.owner))
-            }
-        }
+//        composable(route = Screens.RepoListScreen.route) {
+//            RepoListScreen {
+//                navController.navigate(Screens.RepoDetailsScreen.passOwnerAndName(name = it.name, owner = it.owner))
+//            }
+//        }
 
-        composable(
-            route = Screens.RepoDetailsScreen.route,
-            arguments = listOf(
-                navArgument(OWNER_ARGUMENT_KEY) {
-                    type = NavType.StringType
-                },
-                navArgument(NAME_ARGUMENT_KEY) {
-                    type = NavType.StringType
-                },
-            )
-        ) {
-            val owner = it.arguments?.getString(OWNER_ARGUMENT_KEY)
-            val name = it.arguments?.getString(NAME_ARGUMENT_KEY)
-            if (owner != null && name != null) {
-                RepoDetailsScreen(
-                    owner = owner,
-                    name = name,
-                    onClickBack = { navController.navigateUp() },
-                    onClickViewIssues = {
-
-                    }) {
-                }
-            }
-        }
+//        composable(
+//            route = Screens.RepoDetailsScreen.route,
+//            arguments = listOf(
+//                navArgument(OWNER_ARGUMENT_KEY) {
+//                    type = NavType.StringType
+//                },
+//                navArgument(NAME_ARGUMENT_KEY) {
+//                    type = NavType.StringType
+//                },
+//            )
+//        ) {
+//            val owner = it.arguments?.getString(OWNER_ARGUMENT_KEY)
+//            val name = it.arguments?.getString(NAME_ARGUMENT_KEY)
+//            if (owner != null && name != null) {
+//                RepoDetailsScreen(
+//                    owner = owner,
+//                    name = name,
+//                    onClickBack = { navController.navigateUp() },
+//                    onClickViewIssues = {
+//
+//                    }) {
+//                }
+//            }
+//        }
     }
 }

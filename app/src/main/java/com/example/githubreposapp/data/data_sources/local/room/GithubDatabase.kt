@@ -8,7 +8,7 @@ import com.example.githubreposapp.data.data_sources.local.room.entities.GithubRe
 @Database(
     entities = [GithubRepositoriesEntity::class],
     version = 1,
-    exportSchema = true
+    exportSchema = false
 )
 @TypeConverters(RepositoriesTypeConverter::class)
 abstract class GithubDatabase: RoomDatabase() {

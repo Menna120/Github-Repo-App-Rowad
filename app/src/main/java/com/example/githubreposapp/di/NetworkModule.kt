@@ -4,7 +4,6 @@ import com.example.githubreposapp.data.Constants.Companion.BASE_URL
 import com.example.githubreposapp.data.data_sources.remote.GithubRemoteDataSource
 import com.example.githubreposapp.data.data_sources.remote.retrofit.api.GithubApi
 import com.example.githubreposapp.data.data_sources.remote.retrofit.api.RepoDetailsApi
-import com.example.githubreposapp.data.data_sources.remote.retrofit.datamodel.repo_details.RepositoryDetailsDataModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,19 +17,20 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-//    @Provides
-//    @Singleton
-//    fun provideRemoteDataSource(
-//        githubApi: GithubApi
-//    ): GithubRemoteDataSource {
-//        return GithubRemoteDataSource(githubApi)
-//    }
+    @Provides
+    @Singleton
+    fun provideRemoteDataSource(
+        githubApi: GithubApi,
+        repoDetailsApi: RepoDetailsApi
+    ): GithubRemoteDataSource {
+        return GithubRemoteDataSource(githubApi, repoDetailsApi)
+    }
 
     @Provides
     @Singleton
     fun provideGithubApi(
         retrofit: Retrofit
-    ):GithubApi {
+    ): GithubApi {
         return retrofit.create(GithubApi::class.java)
     }
 
@@ -38,7 +38,7 @@ object NetworkModule {
     @Singleton
     fun provideRepoDetailsApi(
         retrofit: Retrofit
-    ):RepoDetailsApi {
+    ): RepoDetailsApi {
         return retrofit.create(RepoDetailsApi::class.java)
     }
 
